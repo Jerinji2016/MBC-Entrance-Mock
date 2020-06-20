@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/login-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="body-container">
+        <div class=q-head>
+            <img src="../img/logo/mbc-logo-expanded.png" alt="mbc-logo">
+        </div>
+        <div class="login-container">
+            <form action="php/login.php" method="post">
+                <div class="username-wrapper">
+                    <label for="user">
+                        Username :
+                    </label>
+                    <input type="text" name="user" id="user" required>
+                </div>
+                <div class="password-wrapper">
+                    <label for="pass">
+                        Password : 
+                    </label>
+                    <input type="password" name="pass" id="pass" required>
+                </div>
+                <div class="submit-wrapper">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

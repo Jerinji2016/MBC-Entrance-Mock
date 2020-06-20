@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Mock Entrance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header-container">
+        <img src="../img/logo/mbc-logo-expanded.png" alt="">
+    </div>
+    <div class="body-container">
+        <div class="login-container">
+            <form action="register.php" method="post">
+                <table>
+                    <tr>
+                        <td>Full Name</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" name="name" id="name" class="input-field" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td>:</td>
+                        <td>
+                            <input type="email" class="input-field" name="email" id="email" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone No.</td>
+                        <td>:</td>
+                        <td style="display: flex; flex-direction: column;">
+                            <input type="number" name="phone" class="input-field" id="phone" required>
+                            <div style="display: flex; justify-content: center; align-items: center; padding-top: 5px;">
+                                <input type="checkbox" name="is-whatsapp" id="is-whatsapp">
+                                <label for="is-whatsapp" style="font-size: .7em;">
+                                    This is my WhatsApp number 
+                                </label>
+                            </div>
+                            <span style="font-size: .6em; color: rgb(177, 6, 6)">
+                                (Don't add +91 for your phone)
+                            </span>    
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td>Parent/ Guardian<br>Name</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" name="parent-name" id="parent-name" class="input-field">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" name="address" id="address" class="input-field">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Parent Phone No.</td>
+                        <td>:</td>
+                        <td>
+                            <input type="number" name="parent-phone" class="input-field" id="parent-phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>KEAM</td>
+                        <td>:</td>
+                        <td>
+                            <label for="keam">Yes</label><input type="radio" name="keam" id="keam" value="1">
+                            <label for="keam">No</label><input type="radio" name="keam" id="keam" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>JEE</td>
+                        <td>:</td>
+                        <td>
+                            <label for="jee">Yes</label><input type="radio" name="jee" id="jee" value="1">
+                            <label for="jee">No</label><input type="radio" name="jee" id="jee" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Syllabus</td>
+                        <td>:</td>
+                        <td>
+                            <select name="syllabus" id="syllabus">
+                                <option value="state">Kerela State Board</option>
+                                <option value="cbse">CBSE</option>
+                                <option value="icse">ICSE</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </td>
+                    </tr>             
+                </table>
+                <div class="btn-div">
+                    <input type="submit" value="Register">
+                    <input type="reset" value="Clear">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

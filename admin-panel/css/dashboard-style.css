@@ -1,0 +1,123 @@
+/* Style for dashboard.php */
+*{
+    padding: 0;
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body .bg-image {
+    z-index: -10;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: url("http://mbcpeermade.com/userfiles/poster/59a7487994344d69931e69e79fd9abbc.jpg");
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.header {
+    background-color: rgba(0, 0, 0, 0.87);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    position: fixed;
+    z-index: 10;
+    padding: 10px 0px;
+}
+.header img{
+    width: 45% !important;
+}
+.body-container {
+    width: 100% auto;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    margin: auto;
+}
+.dashboard {
+    padding-top: 15vh;
+    display: flex;
+    overflow-y: hidden;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: flex-start;
+}
+.dashboard div {
+    width: 230px;
+    height: 230px;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto;
+    display: flex;
+    font-weight: 300;
+    font-size: 22px;
+    color: white;
+    background-color: rgba(10, 161, 161, 0.52);
+    border: 1px solid #32D4D6;
+    border-radius: 15%;
+    transition: .5s;
+    outline: none;
+}
+.dashboard div:hover {
+    cursor: pointer;
+    background-color: transparent !important;
+    border: 2px solid #32d4d6;
+    color: #32d4d6 !important;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 24px;
+    touch-action: cross-slide-x;
+}
+
+@media screen and (max-width: 450px) {
+    .body-container {
+        overflow: auto;
+    }
+    .header {
+        height: 10vh;
+        align-self: center;
+        position: unset;
+        z-index: 10;
+        padding: 0;
+    }
+    .body-container {
+        padding: 0;
+        margin: 0;
+        width: unset;
+        height: 90vh;
+        display: flex;
+    }
+    .dashboard {
+        margin: 0;
+        padding: 0;
+        height: inherit;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .dashboard div {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+    }
+    .dashboard div:hover {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url('https://wallpaperaccess.com/full/345207.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.container {
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    width: 100% auto;
+    height: auto;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.698);
+    padding: 20px 40px;
+}
+.header img {
+    height: 50px;
+}
+.header div {
+    display: flex;
+    align-items: center;
+}
+#left-div {
+    width: 60%;
+    font-size: 25px;
+    font-weight: bold;
+}
+#right-div {
+    display: flex;
+    padding-right: 20px;
+    width: 40%;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+}
+
+.body-container {
+    margin-top: 20px;
+    width: 100% auto;
+    height: auto;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+    padding-left: 50px;
+    font-family: 'Open Sans', sans-serif ;
+    font-family: 'Roboto Condensed', sans-serif ;
+    font-family: 'Baloo Da 2', cursive ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+.help-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid white;
+    height: 0% auto;
+    max-width: 20vw;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+.help-container p {
+    font-size: .8em;
+}
+.more-link a{
+    color: white;
+}
+.preview {
+    padding: 0px 0px 0px 10px !important;
+    margin: 0 !important;
+    word-wrap: initial; 
+    display: inline !important;
+    max-width: 20vw;
+    font-size: .7em;
+    text-align: start;
+}
+.help-container table td{
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+}
+.body-container div {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+input[type=text] {
+    border-radius: 7px;
+    padding: 5px;
+    border: 1px solid grey;
+}
+input[type=button] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background-color: seagreen;
+    color: white;
+    font-weight: bold;
+    transition: .7s;
+    margin-top: 10px;
+}
+input[type=button]:hover {
+    background-color: green;
+    cursor: pointer;
+}
+select {
+    width: 100px;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+select div {
+    border-radius: 10px;
+}
+textarea {
+    border-radius: 10px;
+}
+
+.q-table {
+    padding: 10px;
+    width: auto !important;
+    max-width: 80vw;
+}
+.q-table tr td {
+    padding: 5px;
+}
+.left-td {
+    text-align: right;
+}
+.query-class {
+    width: fit-content;
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.q-container {
+    width: auto;
+    display: flex;
+    padding: 0px !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(4, 28, 165);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0300b3; 
+  border-radius: 8px;
+}

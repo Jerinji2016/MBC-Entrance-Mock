@@ -1,0 +1,240 @@
+/* Style for editQuestions.php */
+.mbc-header-logo {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    width: 98.5%;
+    height: 13vh;
+    background-color: rgba(0, 0, 0, 0.815);
+}
+.mbc-header-logo div {
+    width: 50%;
+    color: white;
+    margin: 20px 30px;
+}
+#mbc-logo {
+    z-index: inherit !important;
+    filter: inherit !important;
+    position: inherit;
+    width: 75%;
+}
+.q-body-container {
+    margin-top: auto;
+    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    overflow: auto;
+}
+.question-container {
+    width: 100% auto;
+    padding: 20px;
+}
+.filter-container {
+    padding: 30px;
+    padding-top: 15vh;
+    display: flex;
+    justify-content: space-around;
+}
+.topic-button {
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(50, 25, 195);
+    color: white;
+    transition: .7s;
+    cursor: pointer;
+}
+.topic-button:hover {
+    transform: scale(1.1);
+}
+.topic-selected {
+    background-color: grey !important; 
+}
+
+.difficulty-options {
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.difficulty-options button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    background-color: rgb(16, 43, 165);
+    cursor: pointer;
+    transition: .7s;
+}
+
+.difficulty-options button:hover {
+    transform: scale(1.1);
+}
+
+.question-div-container {
+    display: flex;
+    justify-content: center;
+    padding : 10px 0px;
+    border-bottom: 1px solid white;
+}
+#float-edit-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.float-edit-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    margin: auto;
+    position: fixed;
+    background-color: black;
+    opacity: 0.75;
+    z-index: 2;
+}
+
+/* Modal Styles */
+.modal {
+    background-color: white;
+    width: 500px;
+    min-height: 400px;
+    max-height: 600px;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    color: black !important;
+    transition: .5s;
+}
+.field-edit input[type=text] {
+    margin: 3px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 3px;
+}
+/* Pop-in & Pop-out animations */
+@keyframes popIn {
+    0% { transform: scale(.3); }
+    70% { transform: scale(1.1); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); } 
+}
+@keyframes popOut {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.1); }
+    30% { transform: scale(1.1); }
+    100% { transform: scale(0); } 
+}
+
+.edit-wrapper {
+    display: flex;
+}
+.edit-btn-wrapper {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+.edit-btn-wrapper input {
+    transition: .5s;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(216, 210, 210);
+}
+.edit-btn-wrapper input[type=button]:hover {
+    background-color: rgb(209, 43, 43);
+    color: white;
+    transform: scale(1.1);
+}
+.edit-btn-wrapper input[type=submit]:hover {
+    background-color: rgb(39, 206, 39);
+    color: white;
+    transform: scale(1.1);
+}
+.label-edit {
+    width: 100px;
+}
+.field-edit {
+    width: 250px;
+}
+
+.question-header {
+    display: flex;
+}
+.question-list-heading {
+    /* Add do not add or change width attribute of this class */
+    /* All other attribute should have !important at end, Example - margin*/
+    margin: auto !important;
+}
+.q-slno {
+    width: 7%;
+    margin: auto;
+}
+.q-question {
+    width: 40%;
+    margin: auto;
+    padding: 10px;
+}
+.q-options {
+    width: 15%;
+}
+.q-options div {
+    padding: 5px 0px;
+}
+.q-answer {
+    width: 10%;
+    text-align: center;
+    margin: auto;
+}
+.q-difficulty {
+    width: 5%;
+    padding: 10px;
+    margin: auto;
+}
+.q-enteredby {
+    width: 10%;
+    padding: 10px;
+    margin: auto;
+}
+.edit-btn {
+    margin: auto;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(73, 106, 255);
+    color: white;
+    cursor: pointer;
+}
+
+.page-buttons {
+    width: 30% unset;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+.fd-button {
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    border: 0;
+    background-color: yellowgreen;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .6s;
+}
+.fd-button:hover {
+    transform: scale(1.1);
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBC Mock Entrance</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script>localStorage.clear();</script>
+</head>
+<body>
+    <script>
+        var adminxhr = new XMLHttpRequest();
+        xhr.open('GET', '../admin-panel/php/adminSession.php', true);
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                if(xhr.responseText == "0") {
+                    window.location = "../admin-panel/";
+                }
+            }
+        }
+        xhr.send();
+    </script>
+    <div class="q-container">
+        <div class=q-head>
+           <img src="../img/logo/mbc-logo-expanded.png" alt="mbc-logo">
+        </div>
+        <div class="start-field">
+            <div class="rules">
+              <b style="font-size: 20px;">Please note the following: </b><br>
+              <div class="rules">
+                <ul>
+                    <li>Please do not reload the page after Start Button is pressed</li>
+                    <li>Any problem during the exam, consider taking a screenshot and report to the college administrator</li>
+                </ul>
+              </div>
+            </div>
+            <div class="start-button">
+                <button><a href="php/question.php">START</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

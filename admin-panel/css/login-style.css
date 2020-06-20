@@ -1,0 +1,86 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+.body-container {
+    background-color: blueviolet;
+    width: 100w;
+    height: 100vh;
+    background: url("https://i.ytimg.com/vi/3AWoUBUE8wo/maxresdefault.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+.login-container {
+    background-color: rgba(5, 5, 5, 0.493);
+    height: 150px;
+    margin-bottom: 200px;
+    width: fit-content;
+    padding: 30px;
+    border-radius: 30px 5px 30px 5px;
+    box-shadow: 0px 0px 20px black;
+}
+form {
+    display: flex;
+    height: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white
+}
+.q-head {
+    width: auto;
+    text-align: center;
+    background-color: rgba(34, 32, 32, 0.603);
+    margin: auto;
+    padding: 30px 60px;
+    box-shadow: 0px 0px 60px black;
+    border-radius: 20px;
+} 
+.q-head img {
+    width: 100%;
+}
+input[type=text], input[type=password] {
+    padding: 5px;
+    border: 0;
+    border-radius: 10px;
+}
+input[type=submit] {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(9, 136, 9);
+    border: 0;
+    cursor: pointer;
+    transition: .6s;
+}
+input[type=submit]:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 450px){
+    .q-head{
+        padding: 10px 30px;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .login-container {
+        background-color: rgba(5, 5, 5, 0.493);
+        height: 150px;
+        padding: 20px;
+        font-size: 13px;
+    }
+    form input {
+        padding: 0;
+    }
+}

@@ -1,0 +1,85 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(10, 10, 10);
+    overflow-x: hidden;
+    
+    background: url('https://images2.alphacoders.com/559/thumb-1920-559116.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header-container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.712);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+}
+.header-container img{
+    width: 40%;
+    margin: 20px 20px;
+}
+.body-container {
+    padding-top: 20vh;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.login-container {
+    background-color: rgba(216, 127, 43, 0.815);
+    padding: 30px;
+    display: flex;
+    height: fit-content;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    transition: 1s;
+}
+form {
+    width: 100%;
+}
+table tr td{
+    padding: 8px;
+    font-weight: bolder;
+}
+.input-field {
+    border: 0;
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+}
+.btn-div {
+    width: 100%;
+}
+.btn-div input {
+    margin: 10px 30px;
+    background-color: limegreen;
+    border: 0;
+    outline: none;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+select {
+    padding: 5px;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Media Queries */
+@media screen and (max-width: 400px) {
+    .header-container img {
+        width: 65%;
+    }
+    .login-container {
+        padding: 5px;
+        font-size: .8em;
+    }
+}
