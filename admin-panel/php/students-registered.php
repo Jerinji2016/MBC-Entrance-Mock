@@ -6,7 +6,7 @@
         others: "Others"
     };
 
-    var studentList = [], studentsPerPage=13, currentPage=1;
+    var studentList = [], studentsPerPage=100, currentPage=1;
     var studentDivTemplate = document.createElement("DIV");
     let slno = document.createElement("DIV"),
         name = document.createElement("DIV"),

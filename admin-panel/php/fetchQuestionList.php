@@ -25,6 +25,7 @@
         $temp_arr["answer"] = $row[6];
         $temp_arr["difficulty"] = $row[7];
         $temp_arr["entered"] = $row[8];
+        $temp_arr['status'] = (int) $row[9];
 
         array_push($arr, $temp_arr);
         $i++;

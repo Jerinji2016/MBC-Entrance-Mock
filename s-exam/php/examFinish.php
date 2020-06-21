@@ -15,13 +15,18 @@
 
     var resColor = {
         0 : 'red',
-        5 : 'orange',
-        10 : 'skyblue',
-        15 : 'lightgreen',
-        20 : 'rgb(12, 184, 12)'
+        1 : 'orange',
+        2 : 'rgb(12, 184, 12)'
     };
 
     var currentTopic = "physics";
+
+    function escapeFix(str) {
+        var x = str.replace(/\n/g, "");
+        x = x.replace(/\t/g, "");
+        x = x.replace(/\v/g, "");
+        return x;
+    }
 
 </script>
 
@@ -65,17 +70,18 @@
             while($row = mysql_fetch_assoc($res)) {
                 ?> 
                 <script>
-                    var arr = JSON.parse('<?php echo json_encode($row) ?>');
+                    var str = '<?php echo json_encode($row) ?>';
+                    str = escapeFix(str);
+                    var arr = JSON.parse(str);
                     result[arr['topic']].push(arr);
                 </script>
                 <?php
             }
    
-            include '../../session.php';
-            session_destroy();
+            // include '../../session.php';
+            // session_destroy();
 
-            $var = mysql_query('DROP TABLE `'.$user.'`');
-            echo $conn;
+            // $var = mysql_query('DROP TABLE `'.$user.'`');
         ?>
         <div class="congrats-div">
             Congrats on completing your Exam
@@ -84,7 +90,7 @@
             <div class="total-marks-container">
                 <div class="topic-mark-container">
                     <div id="marks-physics" class="topic-marks">
-                        <?php echo $result['physics_marks'] ?>/20
+                        <?php echo $result['physics_marks'] ?>/30
                         <hr>
                         <span>
                             Physics
@@ -94,7 +100,7 @@
                 </div>
                 <div class="topic-mark-container">
                     <div id="marks-chemistry"class="topic-marks">
-                        <?php echo $result['chemistry_marks'] ?>/20
+                        <?php echo $result['chemistry_marks'] ?>/30
                         <hr>
                         <span>
                             Chemistry
@@ -104,7 +110,7 @@
                 </div>
                 <div class="topic-mark-container">
                     <div id="marks-maths" class="topic-marks">
-                        <?php echo $result['maths_marks'] ?>/20
+                        <?php echo $result['maths_marks'] ?>/60
                         <hr>
                         <span>
                             Maths
@@ -112,16 +118,16 @@
                     </div>
                     <div class="mark-bar" id="mark-bar-maths"></div>
                 </div>
-                <div class="topic-mark-container">
+                <!-- <div class="topic-mark-container">
                     <div id="marks-gk" class="topic-marks">
-                        <?php echo $result['gk_marks'] ?>/20
+                        <?php echo $result['gk_marks'] ?>/0
                         <hr>
                         <span>
                             GK
                         </span>
                     </div>
                     <div class="mark-bar" id="mark-bar-gk"></div>
-                </div>
+                </div> -->
             </div>
             <div class="check-note">
                 Check where you went Wrong!!
@@ -130,7 +136,7 @@
                 <button id="physics" class="topic-selected" onclick="selectTopic(this)">Physics</button>
                 <button id="chemistry" onclick="selectTopic(this)">Chemistry</button>
                 <button id="maths" onclick="selectTopic(this)">Maths</button>
-                <button id="gk" onclick="selectTopic(this)">GK</button>
+                <!-- <button id="gk" onclick="selectTopic(this)">GK</button> -->
             </div>
             <hr style="width: 80%">
 
@@ -153,25 +159,47 @@
     // console.log(result); 
     displayResult();
 
+    //  Check for reload
+    window.onbeforeunload = function() {
+        return "You result may not be available on reload";
+    }
+
     window.onload = function() {
         // console.clear();
 
-        setColor(document.getElementById('marks-physics'), finalResult.physics_marks);
-        setColor(document.getElementById('marks-chemistry'), finalResult.chemistry_marks);
-        setColor(document.getElementById('marks-maths'), finalResult.maths_marks);
-        setColor(document.getElementById('marks-gk'), finalResult.gk_marks);
+        setColor(document.getElementById('marks-physics'), finalResult.physics_marks, "p");
+        setColor(document.getElementById('marks-chemistry'), finalResult.chemistry_marks, "c");
+        setColor(document.getElementById('marks-maths'), finalResult.maths_marks, "m");
+        // setColor(document.getElementById('marks-gk'), finalResult.gk_marks);
 
         MathJax.typeset();
     }
 
-    function setColor(item, val) {
-        r = Math.ceil(val/5);
-        r *= 5;
-        // console.log(r);
-        item.style.color = resColor[r];
-        item.parentNode.style.border = `2px solid ${resColor[r]}`;
-        item.parentNode.childNodes[3].style.backgroundColor = resColor[r];
-        item.parentNode.childNodes[3].style.width = Math.ceil((val*100)/20);
+    function setColor(item, val, sub) {
+        let color;
+        if(val <= 0) {
+            color = resColor[0];
+            item.parentNode.childNodes[3].style.width = 0   ;
+        }
+        else {
+            if(sub !== "m") {
+                if(val>=15)
+                    color = resColor[2];
+                else 
+                    color = resColor[1];
+                item.parentNode.childNodes[3].style.width = Math.ceil((val*100)/30);
+            }else {
+                if(val>=30)
+                    color = resColor[2];
+                else 
+                    color = resColor[1];
+                
+                item.parentNode.childNodes[3].style.width = Math.ceil((val*100)/60);
+            }
+        }
+        item.style.color = color;
+        item.parentNode.style.border = `2px solid ${color}`;
+        item.parentNode.childNodes[3].style.backgroundColor = color;
         // console.log(item.parentNode.childNodes[3]);
     }
 
@@ -231,7 +259,7 @@
             itemDiv[2].innerHTML = option;
             
             itemDiv[3].innerHTML = item[op[item.answer]];
-            itemDiv[4].innerHTML = item[op[item.answered]] ?? "{unanswered}";
+            itemDiv[4].innerHTML = item[op[item.answered]] ?? "{Unanswered}";
 
             if(item.answered == null) {
                 itemDiv[4].style.backgroundColor = 'transparent';
@@ -251,5 +279,4 @@
         }
         catch(e) {}
     }
-
 </script>

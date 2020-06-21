@@ -9,7 +9,7 @@
 
     var currentTopic = "physics", hardness = null;
     var questionList = {};
-    var questionsPerLoad = 10, pageNo = 1;
+    var questionsPerLoad = 20, pageNo = 1;
 
     var questionDivTemplate = document.createElement("DIV");
     questionDivTemplate.setAttribute("class", "question-div-container");
@@ -76,6 +76,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             color: white;
+            background-color: black;
         }
     </style>
 
@@ -99,7 +100,7 @@
             <div class="edit-wrapper">
                 <div class="label-edit">Question : </div>
                 <div class="field-edit">
-                    <textarea name="question" id="question" cols="30" rows="4"></textarea>
+                    <textarea name="question" id="question" cols="40" rows="5"></textarea>
                 </div>
             </div>
             <div class="edit-wrapper">
@@ -134,6 +135,7 @@
             </div>
             <div class="edit-btn-wrapper">
                 <input type="submit" value="Submit" onclick="updateQuestion()">
+                <input type="button" value="Disable" onclick="disableQuestion()"     id='disableBtn'>
                 <input type="button" value="Cancel" onclick="hideModal()">
             </div>
         </div>
@@ -331,6 +333,9 @@
             //  Entered By
             div.childNodes[5].innerHTML = questionList[x].entered;
 
+            if(questionList[x].status == 0)
+                div.classList.add("disabled");
+
             target.appendChild(div);
         }
     }
@@ -347,6 +352,7 @@
                 displayList();
             }
         }
+        MathJax.typeset();
     }
 
     function hideModal() {
@@ -366,9 +372,9 @@
 
         var id = parseInt(origin.id)-1;
         editQ = id;
-        console.log(id);
-        console.log(questionList[id]);
-        console.log(origin);
+        // console.log(id);
+        // console.log(questionList[id]);
+        // console.log(origin);
         modal.question.value = questionList[id].question;
         modal.options.option1.value = questionList[id].option1;
         modal.options.option2.value = questionList[id].option2;
@@ -376,6 +382,39 @@
         modal.options.option4.value = questionList[id].option4;
         modal.answer.value = questionList[id].answer;
         modal.difficulty.value = questionList[id].difficulty;
+
+        if(questionList[id].status == 0) {
+            document.getElementById('disableBtn').value = "Enable";
+            document.getElementById('disableBtn').setAttribute("class", "enableBtn");
+        }
+        else {
+            document.getElementById('disableBtn').value = "Disable";
+            document.getElementById('disableBtn').setAttribute("class", "disableBtn");
+        }
+    }
+
+    function disableQuestion() {
+        console.log(questionList[editQ].status);
+        var x = "&id="+questionList[editQ].id;
+        x += "&topic="+currentTopic;
+        x += "&status=";
+
+        x += (questionList[editQ].status)==0 ? 1 : 0;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'disableQuestion.php?'+x, true);
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.response);
+                if(xhr.responseText == "1") {
+                    fetchQuestionList();
+                    hideModal();
+                }  else {
+                    alert("Failed to disable question! Try via phpMy Admin");
+                }
+            }
+        }
+        xhr.send(x);
     }
 
     function updateQuestion() {

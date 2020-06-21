@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    
+    background-color: rgba(0, 0, 0, 0.753) !important;
     background: url("https://wallpapercave.com/wp/wp2610900.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;

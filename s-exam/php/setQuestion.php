@@ -4,12 +4,13 @@
     $n = $_GET['n'];
     $topic = $_GET['topic'];
     $user = $_GET['user'];
+    
     $table = $topic."_questions";
 
     //  Set Question difficulty theme #diffTheme
-    $easy_question = 6; 
-    $avg_question = 8;
-    $hard_question = 6;
+    // $easy_question = 6; 
+    // $avg_question = 8;
+    // $hard_question = 6;
     
     $count_check = "SELECT COUNT(*) FROM `$user` WHERE topic='$topic'"; 
     $count_check = mysql_query($count_check);
@@ -17,16 +18,18 @@
     // echo $count_check;
     if($count_check == 0) {
         //  Fetch Question for each Difficulty
-        // echo " -- here";
-        questionFetchFromDB("easy", $table, $easy_question, $topic, $user, 0);
-        questionFetchFromDB("average", $table, $avg_question, $topic, $user, $easy_question);
-        questionFetchFromDB("hard", $table, $hard_question, $topic, $user, ($easy_question+$avg_question));
+        questionFetchFromDB($table, $n, $topic, $user, 0);
+        // questionFetchFromDB($table, $avg_question, $topic, $user, $easy_question);
+        // questionFetchFromDB($table, $hard_question, $topic, $user, ($easy_question+$avg_question));
     }
 
-    function questionFetchFromDB($difficulty, $table, $qCount, $topic, $user, $count) {
+    function questionFetchFromDB($table, $qCount, $topic, $user, $count) {
         // Fetch the number of rows 
-        $fq = mysql_query("SELECT question, option1, option2, option3, option4, answer FROM $table WHERE difficulty='$difficulty'");
+        $fq_sql = "SELECT question, option1, option2, option3, option4, answer FROM $table WHERE status=1";
+        $fq = mysql_query($fq_sql);
         $c = (int)mysql_num_rows($fq);
+        
+        echo $fq_sql."\n\n";
 
         $rand = range(1, $c);
         shuffle($rand);
@@ -40,8 +43,8 @@
 
                 if(!$conn) {
                     echo "$i th question not added\n";
-                    echo $row[0]."\n";
-                    echo "\n".$iq."\n\n\n";
+                    // echo $row[0]."\n";
+                    echo $iq."\n\n";
                 }
             }
             $i++;

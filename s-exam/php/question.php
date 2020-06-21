@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style.css?v=6">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
         MathJax = {
@@ -38,8 +39,8 @@
             <div class="topic">Chemistry</div>
             <div class="line-next"></div>
             <div class="topic">Maths</div>
-            <div class="line-next"></div>
-            <div class="topic">GK</div>
+            <!-- <div class="line-next"></div>
+            <div class="topic">GK</div> -->
         </div>
         <div class="question-wrapper">
             <div class="question-list" id="question-list"></div>
@@ -76,9 +77,18 @@
             <b>Note:</b> Your answers are noted only when you click on <b>Submit</b>!
         </div>
 
+        <div class="question-change">
+            <div onclick="questionChange('-')">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Previous
+            </div>
+            <div onclick="questionChange('+')">
+                Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </div>
+
         <div id="submit">
             <input type="submit" value="Submit" onclick="findAns()">
-            <input type="button" id='d-button' value="Next Category" onclick="nextTopic()" style="margin-left: 50px">
+            <input type="button" id='d-button' value="Next Category" onclick="nextTopic()">
         </div>
     </div>
 </body>

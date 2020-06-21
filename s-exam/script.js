@@ -1,6 +1,14 @@
 //  Number of Questions here #qno
-const questionNo = 20, topics = ["physics", "chemistry", "maths", "gk"];
+const topics = ["physics", "chemistry", "maths", "gk"];
 var t_counter = 0;
+
+const noQues = {
+    physics: 30,
+    chemistry: 30,
+    maths: 60,
+    gk: 0
+}
+var questionNo = 20;
 
 var currentTopic, currentQuestion;
 
@@ -8,7 +16,8 @@ if(!localStorage.getItem("topic")) {
     var questionArray = [];
     // console.log("No local storage item");
     questionArray.length = 0;
-    currentTopic = "physics"; 
+    currentTopic = "physics";
+    questionNo = noQues[currentTopic];   
     currentQuestion = 1;
 
     localStorage.setItem("topic", currentTopic);
@@ -31,7 +40,7 @@ else {
 console.log(currentTopic, currentQuestion, "t_count="+t_counter);
 
 //  Exam Time details #timer
-var examDuration =  3600,
+var examDuration =  120*60,
     timerDuration = examDuration,
     lap = examDuration, 
     warnTime = 5;
@@ -94,7 +103,16 @@ function startTimer(target, duration) {
 }
 
 function initEvnironment() {
+    questionNo = noQues[currentTopic];
     questionList(questionNo);
+    
+    // if(currentTopic == topics[2]) {
+    //     //  Change Next Category Button to "Finish"
+    //     var btn = document.getElementById('d-button');
+    //     btn.setAttribute("onclick", "finish()");
+    //     btn.setAttribute("value", "Finish");
+    // }
+
     document.getElementsByClassName("topic")[t_counter].classList.add("topic-selected");
     document.getElementsByClassName("q-circle")[currentQuestion-1].classList.add("question-selected");
 
@@ -139,7 +157,7 @@ function setQuestion(n, topic) {
     xhr.open('GET', 'setQuestion.php?'+x, true);
     xhr.onreadystatechange = function() {
         if(xhr.readyState == 4 && xhr.status == 200) {
-            // console.log("- Questions Set!");
+            console.log(xhr.responseText);
             fetchQuestion();
         }
     }
@@ -181,6 +199,7 @@ function displayQuestion(arr) {
     
 function questionList(n) {
     const target = document.getElementById('question-list');
+    target.innerHTML = "";
     for(let i=1; i<=n; i++) {
         let div = document.createElement("DIV");
         div.innerHTML = i;
@@ -243,6 +262,8 @@ function nextTopic() {
         currentTopic = topics[t_counter];
         localStorage.setItem("topic", currentTopic);
 
+        initEvnironment();
+
         questionArray.length = 0;
         for(let c=1; c<=questionNo; c++)
             questionArray.push(c);
@@ -250,15 +271,19 @@ function nextTopic() {
         localStorage["q-array"] = JSON.stringify(questionArray);
         console.log("\n\n",JSON.parse(localStorage.getItem("q-array")));
 
+        questionNo = noQues[currentTopic];
+        console.log("Topic Change to "+ currentTopic);
         setQuestion(questionNo, currentTopic);
 
-        if(t_counter >= 3) {
+        if(t_counter >= 2) {
             //  Change Next Category Button to "Finish"
             var btn = document.getElementById('d-button');
             btn.setAttribute("onclick", "finish()");
             btn.setAttribute("value", "Finish");
 
         }
+        questionList(questionNo); 
+        // location.reload();
     }
 }
 
@@ -322,9 +347,8 @@ function finalizeAnswer(answer) {
     localStorage["q-array"] = JSON.stringify(questionArray);
     console.log(localStorage["q-array"], "ans submit");
 
-    if(document.getElementsByClassName('q-circle')[questionArray[index]] == undefined) {
+    if(document.getElementsByClassName('q-circle')[questionArray[index]] == undefined)
         nextQ = document.getElementsByClassName('q-circle')[(questionArray[0]-1)];
-    }
     else   
         nextQ = document.getElementsByClassName('q-circle')[(questionArray[index]-1)];
 
@@ -341,4 +365,25 @@ function finalizeAnswer(answer) {
         }
     }
     xhr.send(x);
+}
+
+function questionChange(change) {
+    var index = questionArray.indexOf(currentQuestion);
+    var nextQ;
+
+    console.log(questionArray);
+    console.log(currentQuestion, index);
+
+    if(change == '+') {
+        if(document.getElementsByClassName('q-circle')[questionArray[index+1]] == undefined)
+            nextQ = document.getElementsByClassName('q-circle')[(questionArray[0]-1)];
+        else  
+            nextQ = document.getElementsByClassName('q-circle')[(questionArray[index+1]-1)];
+    } else {
+        if(document.getElementsByClassName('q-circle')[questionArray[index-1]] == undefined)
+            nextQ = document.getElementsByClassName('q-circle')[(questionArray[questionArray.length - 1]-1)];
+        else  
+            nextQ = document.getElementsByClassName('q-circle')[(questionArray[index-1]-1)];
+    }
+    selectQuestion(nextQ);
 }

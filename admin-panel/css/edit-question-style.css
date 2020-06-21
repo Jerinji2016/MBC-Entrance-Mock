@@ -238,3 +238,18 @@
 .fd-button:hover {
     transform: scale(1.1);
 }
+.disabled {
+    background-color: rgba(85, 83, 83, 0.719);
+    box-shadow: 0px 0px 5px 5px rgba(85, 83, 83, 0.719);
+}
+
+.disableBtn:hover {
+    background-color: rgb(41, 41, 41) !important;
+    color: white;
+    transform: scale(1.1);
+}
+.enableBtn:hover {
+    background-color: rgb(20, 57, 221) !important;
+    color: white;
+    transform: scale(1.1);
+}
